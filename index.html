@@ -1,79 +1,131 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فروشگاه بدلیجات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff8f0;
-      color: #333;
-      direction: rtl;
+      background: #fdfdfd;
+      color: #222;
     }
-    header, footer {
-      background: #b88c9e;
+    header {
+      background-color: #b88c9e;
       color: white;
-      padding: 1rem;
-      text-align: center;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      margin-right: 1rem;
+      text-decoration: none;
+      font-weight: bold;
     }
     main {
-      padding: 1rem;
+      padding: 2rem;
+    }
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .category {
+      background: #eee;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
     .product {
       border: 1px solid #ccc;
+      border-radius: 10px;
       padding: 1rem;
-      margin: 1rem 0;
+      text-align: center;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .product h3 {
+      margin: 0.5rem 0;
     }
     .btn {
-      background: #b88c9e;
+      background-color: #b88c9e;
       color: white;
-      border: none;
       padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .cart {
-      background: #eee;
+    .cart, .login, .order-form {
+      background: #f7f7f7;
       padding: 1rem;
+      border-radius: 10px;
       margin-top: 2rem;
     }
-    form {
-      margin-top: 1rem;
-    }
-    input, textarea {
+    form input, form textarea {
       width: 100%;
-      padding: 0.5rem;
       margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>فروشگاه بدلیجات</h1>
-    <button onclick="toggleLogin()">ورود مشتری</button>
+    <nav>
+      <a href="#">خانه</a>
+      <a href="#products">محصولات</a>
+      <a href="#cart">سبد خرید</a>
+      <a href="#order">سفارش</a>
+      <a href="#login">ورود</a>
+    </nav>
   </header>
 
   <main>
-    <section id="login" style="display:none">
-      <h2>ورود</h2>
-      <input type="text" placeholder="نام کاربری" />
-      <input type="password" placeholder="رمز عبور" />
-      <button class="btn" onclick="alert('ورود موفق!')">ورود</button>
+    <section class="categories">
+      <div class="category">دستبند</div>
+      <div class="category">گردنبند</div>
+      <div class="category">انگشتر</div>
+      <div class="category">گوشواره</div>
     </section>
 
-    <section id="products">
-      <h2>محصولات</h2>
+    <section class="products" id="products">
       <div class="product">
-        <h3>دستبند طرح طلا</h3>
-        <p>قیمت: ۵۰ هزار تومان</p>
-        <button class="btn" onclick="addToCart('دستبند', 50000)">افزودن به سبد</button>
+        <h3>دستبند طلایی</h3>
+        <p>قیمت: ۵۰,۰۰۰ تومان</p>
+        <button class="btn" onclick="addToCart('دستبند طلایی', 50000)">افزودن به سبد</button>
       </div>
       <div class="product">
-        <h3>گردنبند نگین دار</h3>
-        <p>قیمت: ۷۵ هزار تومان</p>
-        <button class="btn" onclick="addToCart('گردنبند', 75000)">افزودن به سبد</button>
+        <h3>گردنبند نگین‌دار</h3>
+        <p>قیمت: ۷۵,۰۰۰ تومان</p>
+        <button class="btn" onclick="addToCart('گردنبند نگین‌دار', 75000)">افزودن به سبد</button>
+      </div>
+      <div class="product">
+        <h3>انگشتر نقره‌ای</h3>
+        <p>قیمت: ۴۰,۰۰۰ تومان</p>
+        <button class="btn" onclick="addToCart('انگشتر نقره‌ای', 40000)">افزودن به سبد</button>
       </div>
     </section>
 
@@ -83,29 +135,31 @@
       <p id="total">جمع کل: ۰ تومان</p>
     </section>
 
-    <section id="order-form">
-      <h2>فرم سفارش</h2>
+    <section class="order-form" id="order">
+      <h2>ثبت سفارش</h2>
       <form onsubmit="submitOrder(event)">
-        <input type="text" placeholder="نام کامل" required />
-        <input type="text" placeholder="آدرس" required />
-        <input type="tel" placeholder="شماره تماس" required />
+        <input type="text" placeholder="نام کامل" required>
+        <input type="text" placeholder="آدرس" required>
+        <input type="tel" placeholder="شماره تماس" required>
         <textarea placeholder="توضیحات سفارش"></textarea>
-        <button class="btn" type="submit">ثبت سفارش</button>
+        <button class="btn" type="submit">ارسال سفارش</button>
       </form>
+    </section>
+
+    <section class="login" id="login">
+      <h2>ورود مشتری</h2>
+      <input type="text" placeholder="نام کاربری">
+      <input type="password" placeholder="رمز عبور">
+      <button class="btn" onclick="alert('ورود موفق!')">ورود</button>
     </section>
   </main>
 
   <footer>
-    <p>تمام حقوق محفوظ است © فروشگاه بدلیجات</p>
+    <p>تمامی حقوق برای فروشگاه بدلیجات محفوظ است ©</p>
   </footer>
 
   <script>
     let cart = [];
-
-    function toggleLogin() {
-      const loginSection = document.getElementById('login');
-      loginSection.style.display = loginSection.style.display === 'none' ? 'block' : 'none';
-    }
 
     function addToCart(product, price) {
       cart.push({ product, price });
