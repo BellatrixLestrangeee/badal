@@ -4,187 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فروشگاه بدلیجات</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fdfdfd;
-      color: #222;
-    }
-    header {
-      background-color: #b88c9e;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      margin: 0;
-    }
-    nav a {
-      color: white;
-      margin-right: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    main {
-      padding: 2rem;
-    }
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .category {
-      background: #eee;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .product {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .product h3 {
-      margin: 0.5rem 0;
-    }
-    .btn {
-      background-color: #b88c9e;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .cart, .login, .order-form {
-      background: #f7f7f7;
-      padding: 1rem;
-      border-radius: 10px;
-      margin-top: 2rem;
-    }
-    form input, form textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <header>
-    <h1>فروشگاه بدلیجات</h1>
-    <nav>
-      <a href="#">خانه</a>
-      <a href="#products">محصولات</a>
-      <a href="#cart">سبد خرید</a>
-      <a href="#order">سفارش</a>
-      <a href="#login">ورود</a>
-    </nav>
-  </header>
+  <div id="root"></div>
+  <script type="text/babel">
+    const Navbar = () => (
+      <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <div className="flex items-center space-x-4">
+          <img src="https://via.placeholder.com/150x50?text=لوگو" alt="لوگو" className="h-10" />
+          <input
+            type="text"
+            placeholder="جستجو در بدلیجات..."
+            className="border rounded-full py-2 px-4 w-96 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+        </div>
+        <div className="flex space-x-4">
+          <a href="#" className="text-gray-700 hover:text-pink-600">ورود / ثبت‌نام</a>
+          <a href="#" className="text-gray-700 hover:text-pink-600">سبد خرید</a>
+        </div>
+      </nav>
+    );
 
-  <main>
-    <section class="categories">
-      <div class="category">دستبند</div>
-      <div class="category">گردنبند</div>
-      <div class="category">انگشتر</div>
-      <div class="category">گوشواره</div>
-    </section>
-
-    <section class="products" id="products">
-      <div class="product">
-        <h3>دستبند طلایی</h3>
-        <p>قیمت: ۵۰,۰۰۰ تومان</p>
-        <button class="btn" onclick="addToCart('دستبند طلایی', 50000)">افزودن به سبد</button>
+    const Banner = () => (
+      <div className="relative">
+        <img
+          src="https://via.placeholder.com/1200x400?text=بنر+تبلیغاتی+بدلیجات"
+          alt="بنر"
+          className="w-full h-96 object-cover"
+        />
+        <div className="absolute top-1/2 right-10 transform -translate-y-1/2 text-white">
+          <h2 className="text-3xl font-bold">جدیدترین مجموعه بدلیجات</h2>
+          <button className="mt-4 bg-pink-600 text-white py-2 px-6 rounded-full hover:bg-pink-700">
+            خرید کنید
+          </button>
+        </div>
       </div>
-      <div class="product">
-        <h3>گردنبند نگین‌دار</h3>
-        <p>قیمت: ۷۵,۰۰۰ تومان</p>
-        <button class="btn" onclick="addToCart('گردنبند نگین‌دار', 75000)">افزودن به سبد</button>
+    );
+
+    const Categories = () => (
+      <div className="py-6 px-6">
+        <h3 className="text-xl font-bold mb-4">دسته‌بندی‌ها</h3>
+        <div className="grid grid-cols-6 gap-4">
+          {["گوشواره", "گردنبند", "دستبند", "انگشتر", "ست بدلیجات", "اکسسوری مو"].map((category) => (
+            <a
+              key={category}
+              href="#"
+              className="flex flex-col items-center p-4 bg-gray-100 rounded-lg hover:bg-pink-100"
+            >
+              <img
+                src={`https://via.placeholder.com/100?text=${category}`}
+                alt={category}
+                className="w-20 h-20 rounded-full"
+              />
+              <span className="mt-2 text-sm">{category}</span>
+            </a>
+          ))}
+        </div>
       </div>
-      <div class="product">
-        <h3>انگشتر نقره‌ای</h3>
-        <p>قیمت: ۴۰,۰۰۰ تومان</p>
-        <button class="btn" onclick="addToCart('انگشتر نقره‌ای', 40000)">افزودن به سبد</button>
+    );
+
+    const Products = () => (
+      <div className="py-6 px-6">
+        <h3 className="text-xl font-bold mb-4">محصولات پیشنهادی</h3>
+        <div className="grid grid-cols-4 gap-4">
+          {Array(8).fill().map((_, i) => (
+            <div key={i} className="border rounded-lg p-4 hover:shadow-lg">
+              <img
+                src="https://via.placeholder.com/200?text=بدلیجات"
+                alt="محصول"
+                className="w-full h-48 object-cover rounded"
+              />
+              <h4 className="mt-2 text-sm font-semibold">گوشواره نقره‌ای مدل {i + 1}</h4>
+              <p className="text-pink-600 font-bold mt-1">250,000 تومان</p>
+              <button className="mt-2 w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700">
+                افزودن به سبد
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    );
 
-    <section class="cart" id="cart">
-      <h2>سبد خرید</h2>
-      <ul id="cart-items"></ul>
-      <p id="total">جمع کل: ۰ تومان</p>
-    </section>
+    const Footer = () => (
+      <footer className="bg-gray-800 text-white py-6 px-6">
+        <div className="grid grid-cols-4 gap-4">
+          <div>
+            <h4 className="font-bold mb-2">درباره ما</h4>
+            <p className="text-sm">فروشگاه بدلیجات با بهترین کیفیت و قیمت</p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">لینک‌های مفید</h4>
+            <ul className="text-sm space-y-1">
+              <li><a href="#" className="hover:underline">تماس با ما</a></li>
+              <li><a href="#" className="hover:underline">سوالات متداول</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">پشتیبانی</h4>
+            <p className="text-sm">پشتیبانی 24 ساعته: 021-12345678</p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-2">شبکه‌های اجتماعی</h4>
+            <div className="flex space-x-2">
+              <a href="#" className="hover:text-pink-400">اینستاگرام</a>
+              <a href="#" className="hover:text-pink-400">تلگرام</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
 
-    <section class="order-form" id="order">
-      <h2>ثبت سفارش</h2>
-      <form onsubmit="submitOrder(event)">
-        <input type="text" placeholder="نام کامل" required>
-        <input type="text" placeholder="آدرس" required>
-        <input type="tel" placeholder="شماره تماس" required>
-        <textarea placeholder="توضیحات سفارش"></textarea>
-        <button class="btn" type="submit">ارسال سفارش</button>
-      </form>
-    </section>
+    const App = () => (
+      <div>
+        <Navbar />
+        <Banner />
+        <Categories />
+        <Products />
+        <Footer />
+      </div>
+    );
 
-    <section class="login" id="login">
-      <h2>ورود مشتری</h2>
-      <input type="text" placeholder="نام کاربری">
-      <input type="password" placeholder="رمز عبور">
-      <button class="btn" onclick="alert('ورود موفق!')">ورود</button>
-    </section>
-  </main>
-
-  <footer>
-    <p>تمامی حقوق برای فروشگاه بدلیجات محفوظ است ©</p>
-  </footer>
-
-  <script>
-    let cart = [];
-
-    function addToCart(product, price) {
-      cart.push({ product, price });
-      renderCart();
-    }
-
-    function renderCart() {
-      const list = document.getElementById('cart-items');
-      list.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.product} - ${item.price.toLocaleString()} تومان`;
-        list.appendChild(li);
-        total += item.price;
-      });
-      document.getElementById('total').textContent = `جمع کل: ${total.toLocaleString()} تومان`;
-    }
-
-    function submitOrder(event) {
-      event.preventDefault();
-      alert('سفارش شما ثبت شد!');
-      cart = [];
-      renderCart();
-    }
+    ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
 </html>
