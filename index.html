@@ -3,132 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فروشگاه بدلیجات</title>
+  <title>گالری لونا - خرید آنلاین بدلیجات لوکس و باکیفیت</title>
+  <meta name="description" content="گالری لونا، فروشگاه آنلاین بدلیجات با طراحی‌های منحصربه‌فرد، کیفیت بالا و قیمت مناسب. انواع گردنبند، دستبند، گوشواره و انگشتر را کشف کنید.">
+  <meta name="keywords" content="بدلیجات, گالری لونا, زیورآلات, خرید بدلیجات, فروشگاه آنلاین بدلیجات, گردنبند, دستبند, گوشواره, انگشتر">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="گالری لونا">
+  <meta name="og:title" content="گالری لونا - فروشگاه آنلاین بدلیجات">
+  <meta name="og:description" content="خرید بدلیجات لوکس با بهترین کیفیت در گالری لونا. جدیدترین طرح‌های گردنبند، دستبند و گوشواره را ببینید.">
+  <meta name="og:image" content="https://luna-gallery.com/images/og-image.jpg">
+  <meta name="og:url" content="https://luna-gallery.com">
+  <meta name="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="گالری لونا - بدلیجات لوکس">
+  <meta name="twitter:description" content="بهترین بدلیجات با طراحی‌های خاص و قیمت مناسب در گالری لونا.">
+  <meta name="twitter:image" content="https://luna-gallery.com/images/twitter-image.jpg">
+  <link rel="canonical" href="https://luna-gallery.com">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.9/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'luna-gold': '#D4AF37',
+            'luna-black': '#1A1A1A',
+            'luna-accent': '#F4E4BC'
+          },
+          fontFamily: {
+            vazir: ['Vazirmatn', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Schema.org for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "گالری لونا",
+      "url": "https://luna-gallery.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://luna-gallery.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "گالری لونا",
+      "url": "https://luna-gallery.com",
+      "logo": "https://luna-gallery.com/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+98-123-456-7890",
+        "contactType": "customer service"
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-luna-black text-luna-accent font-vazir">
   <div id="root"></div>
   <script type="text/babel">
-    const Navbar = () => (
-      <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <img src="https://via.placeholder.com/150x50?text=لوگو" alt="لوگو" className="h-10" />
-          <input
-            type="text"
-            placeholder="جستجو در بدلیجات..."
-            className="border rounded-full py-2 px-4 w-96 focus:outline-none focus:ring-2 focus:ring-pink-500"
-          />
-        </div>
-        <div className="flex space-x-4">
-          <a href="#" className="text-gray-700 hover:text-pink-600">ورود / ثبت‌نام</a>
-          <a href="#" className="text-gray-700 hover:text-pink-600">سبد خرید</a>
-        </div>
-      </nav>
-    );
+    const { useState, useEffect } = React;
 
-    const Banner = () => (
-      <div className="relative">
-        <img
-          src="https://via.placeholder.com/1200x400?text=بنر+تبلیغاتی+بدلیجات"
-          alt="بنر"
-          className="w-full h-96 object-cover"
-        />
-        <div className="absolute top-1/2 right-10 transform -translate-y-1/2 text-white">
-          <h2 className="text-3xl font-bold">جدیدترین مجموعه بدلیجات</h2>
-          <button className="mt-4 bg-pink-600 text-white py-2 px-6 rounded-full hover:bg-pink-700">
-            خرید کنید
+    // Header Component with Mega Menu
+    const Header = () => {
+      const [isMenuOpen, setIsMenuOpen] = useState(false);
+      return (
+        <header className="bg-luna-gold text-luna-black sticky top-0 z-50 shadow-lg">
+          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 className="text-2xl font-bold"><a href="/">گالری لونا</a></h1>
+            <nav className="hidden md:flex space-x-4">
+              <div className="relative group">
+                <button className="hover:text-luna-accent">دسته‌بندی‌ها</button>
+                <div className="absolute hidden group-hover:block bg-luna-black text-luna-accent p-4 shadow-lg rounded-lg">
+                  <a href="/category/necklaces" className="block py-2 hover:text-luna-gold">گردنبند</a>
+                  <a href="/category/bracelets" className="block py-2 hover:text-luna-gold">دستبند</a>
+                  <a href="/category/earrings" className="block py-2 hover:text-luna-gold">گوشواره</a>
+                  <a href="/category/rings" className="block py-2 hover:text-luna-gold">انگشتر</a>
+                </div>
+              </div>
+              <a href="/blog" className="hover:text-luna-accent">بلاگ</a>
+              <a href="/about" className="hover:text-luna-accent">تیم ما</a>
+              <a href="/faq" className="hover:text-luna-accent">سوالات متداول</a>
+              <a href="/search" className="hover:text-luna-accent">جستجو</a>
+            </nav>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
+          {isMenuOpen && (
+            <div className="md:hidden bg-luna-black text-luna-accent p-4">
+              <a href="/category/necklaces" className="block py-2">گردنبند</a>
+              <a href="/category/bracelets" className="block py-2">دستبند</a>
+              <a href="/category/earrings" className="block py-2">گوشواره</a>
+              <a href="/category/rings" className="block py-2">انگشتر</a>
+              <a href="/blog" className="block py-2">بلاگ</a>
+              <a href="/about" className="block py-2">تیم ما</a>
+              <a href="/faq" className="block py-2">سوالات متداول</a>
+              <a href="/search" className="block py-2">جستجو</a>
+            </div>
+          )}
+        </header>
+      );
+    };
+
+    // Product Card Component with Schema.org
+    const ProductCard = ({ product }) => {
+      const [inCart, setInCart] = useState(false);
+      const addToCart = async () => {
+        await fetch('/api/cart/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ productId: product.id, quantity: 1 })
+        });
+        setInCart(true);
+      };
+
+      return (
+        <div className="bg-luna-black border border-luna-gold p-4 rounded-lg shadow hover:shadow-xl transition" itemScope itemType="https://schema.org/Product">
+          <meta itemProp="sku" content={product.id} />
+          <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded" itemProp="image" />
+          <h3 className="text-lg font-semibold mt-2" itemProp="name">{product.name}</h3>
+          <p className="text-luna-accent" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+            <span itemProp="priceCurrency" content="IRR"></span>
+            <span itemProp="price">{product.price}</span> تومان
+          </p>
+          <div className="flex items-center mt-2" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+            <span className="text-yellow-400">★★★★☆</span>
+            <meta itemProp="ratingValue" content={product.rating} />
+            <span className="ml-2">(<span itemProp="reviewCount">{product.ratingCount}</span>)</span>
+          </div>
+          <button onClick={addToCart} className={`mt-4 px-4 py-2 rounded ${inCart ? 'bg-gray-500' : 'bg-luna-gold text-luna-black hover:bg-luna-accent'}`}>
+            {inCart ? 'در سبد خرید' : 'افزودن به سبد خرید'}
           </button>
+          <a href={`/product/${product.id}`} className="ml-2 text-luna-accent hover:underline">مشاهده جزئیات</a>
         </div>
-      </div>
-    );
+      );
+    };
 
-    const Categories = () => (
-      <div className="py-6 px-6">
-        <h3 className="text-xl font-bold mb-4">دسته‌بندی‌ها</h3>
-        <div className="grid grid-cols-6 gap-4">
-          {["گوشواره", "گردنبند", "دستبند", "انگشتر", "ست بدلیجات", "اکسسوری مو"].map((category) => (
-            <a
-              key={category}
-              href="#"
-              className="flex flex-col items-center p-4 bg-gray-100 rounded-lg hover:bg-pink-100"
-            >
-              <img
-                src={`https://via.placeholder.com/100?text=${category}`}
-                alt={category}
-                className="w-20 h-20 rounded-full"
+    // Main App Component
+    const App = () => {
+      const [products, setProducts] = useState([]);
+      const [searchTerm, setSearchTerm] = useState('');
+
+      useEffect(() => {
+        fetch('/api/products')
+          .then(res => res.json())
+          .then(data => setProducts(data))
+          .catch(err => console.error(err));
+      }, []);
+
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      return (
+        <div>
+          <Header />
+          <main className="container mx-auto px-4 py-8">
+            <section className="mb-8">
+              <h2 className="text-3xl font-bold text-luna-gold">جستجوی محصولات</h2>
+              <input
+                type="text"
+                placeholder="جستجوی بدلیجات..."
+                className="w-full p-2 rounded border border-luna-gold mt-4"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <span className="mt-2 text-sm">{category}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    );
-
-    const Products = () => (
-      <div className="py-6 px-6">
-        <h3 className="text-xl font-bold mb-4">محصولات پیشنهادی</h3>
-        <div className="grid grid-cols-4 gap-4">
-          {Array(8).fill().map((_, i) => (
-            <div key={i} className="border rounded-lg p-4 hover:shadow-lg">
-              <img
-                src="https://via.placeholder.com/200?text=بدلیجات"
-                alt="محصول"
-                className="w-full h-48 object-cover rounded"
-              />
-              <h4 className="mt-2 text-sm font-semibold">گوشواره نقره‌ای مدل {i + 1}</h4>
-              <p className="text-pink-600 font-bold mt-1">250,000 تومان</p>
-              <button className="mt-2 w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700">
-                افزودن به سبد
-              </button>
+            </section>
+            <section className="mb-8" itemScope itemType="https://schema.org/SaleEvent">
+              <h2 className="text-3xl font-bold text-luna-gold" itemProp="name">فروش شگفت‌انگیز</h2>
+              <meta itemProp="startDate" content="2025-05-15" />
+              <meta itemProp="endDate" content="2025-05-20" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                {filteredProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </section>
+            <section id="blog" className="mb-8" itemScope itemType="https://schema.org/Blog">
+              <h2 className="text-3xl font-bold text-luna-gold" itemProp="name">بلاگ و مقالات</h2>
+              <article itemProp="blogPost" itemScope itemType="https://schema.org/BlogPosting">
+                <h3 itemProp="headline">چگونه بدلیجات مناسب انتخاب کنیم؟</h3>
+                <meta itemProp="datePublished" content="2025-05-10" />
+                <p itemProp="articleBody">راهنمای انتخاب بدلیجات با توجه به استایل و مناسبت...</p>
+                <a href="/blog/choose-jewelry" className="text-luna-accent hover:underline">ادامه مطلب</a>
+              </article>
+            </section>
+            <section id="about" className="mb-8">
+              <h2 className="text-3xl font-bold text-luna-gold">تیم ما</h2>
+              <p>با تیم حرفه‌ای گالری لونا آشنا شوید...</p>
+            </section>
+            <section id="faq" className="mb-8" itemScope itemType="https://schema.org/FAQPage">
+              <h2 className="text-3xl font-bold text-luna-gold">سوالات متداول</h2>
+              <div itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
+                <h3 itemProp="name">چگونه می‌توانم سفارشم را پیگیری کنم؟</h3>
+                <div itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">
+                  <p itemProp="text">با ورود به حساب کاربری خود در بخش سفارشات می‌توانید وضعیت سفارش را مشاهده کنید.</p>
+                </div>
+              </div>
+            </section>
+            <section id="newsletter" className="mb-8">
+              <h2 className="text-3xl font-bold text-luna-gold">اشتراک در خبرنامه</h2>
+              <form className="mt-4 flex">
+                <input type="email" placeholder="ایمیل خود را وارد کنید" className="p-2 rounded-r border border-luna-gold" />
+                <button type="button" className="p-2 bg-luna-gold text-luna-black rounded-l">اشتراک</button>
+              </form>
+            </section>
+          </main>
+          <footer className="bg-luna-gold text-luna-black py-4">
+            <div className="container mx-auto px-4 text-center">
+              <p>تمامی حقوق برای گالری لونا محفوظ است © 2025</p>
+              <div className="mt-2">
+                <a href="/newsletter" className="mx-2">خبرنامه</a>
+                <a href="/contact" className="mx-2">تماس با ما</a>
+                <a href="/privacy" className="mx-2">حریم خصوصی</a>
+              </div>
             </div>
-          ))}
+          </footer>
+          <a href="https://wa.me/1234567890" className="fixed bottom-4 left-4 bg-green-500 text-white p-4 rounded-full shadow-lg">
+            چت واتس‌اپ
+          </a>
+          <div className="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
         </div>
-      </div>
-    );
-
-    const Footer = () => (
-      <footer className="bg-gray-800 text-white py-6 px-6">
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <h4 className="font-bold mb-2">درباره ما</h4>
-            <p className="text-sm">فروشگاه بدلیجات با بهترین کیفیت و قیمت</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">لینک‌های مفید</h4>
-            <ul className="text-sm space-y-1">
-              <li><a href="#" className="hover:underline">تماس با ما</a></li>
-              <li><a href="#" className="hover:underline">سوالات متداول</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">پشتیبانی</h4>
-            <p className="text-sm">پشتیبانی 24 ساعته: 021-12345678</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">شبکه‌های اجتماعی</h4>
-            <div className="flex space-x-2">
-              <a href="#" className="hover:text-pink-400">اینستاگرام</a>
-              <a href="#" className="hover:text-pink-400">تلگرام</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    );
-
-    const App = () => (
-      <div>
-        <Navbar />
-        <Banner />
-        <Categories />
-        <Products />
-        <Footer />
-      </div>
-    );
+      );
+    };
 
     ReactDOM.render(<App />, document.getElementById('root'));
+
+    // Service Worker for Caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('Service Worker registered:', registration);
+        }).catch(error => {
+          console.log('Service Worker registration failed:', error);
+        });
+      });
+    }
   </script>
 </body>
 </html>
